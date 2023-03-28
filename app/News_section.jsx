@@ -47,6 +47,7 @@ export default async function News_section() {
           {news[0].data.slice(0, 8).map((val, index) => {
             return (
               <NewsItem
+              key={index}
                 label={val.title}
                 date={val.published_at.slice(0, 10)}
                 catergory={val.category}

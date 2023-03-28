@@ -38,9 +38,9 @@ export default async function Recent_news_Section({ styles }) {
           </div>
           <div className={styles.otherrnews}>
             {recentNews[0].data.slice(1, 9).map((val, index) => {
-              console.log(index);
               return (
                 <News_card_hori
+                  key={index}
                   styles={styles}
                   label={val.title}
                   date={val.published_at.slice(0, 10)}
