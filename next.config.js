@@ -4,7 +4,12 @@ const nextConfig = {
     appDir: true,
   },
   images: {
+    domains: ['www.yardbarker.com','**'],
     remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.yardbarker.com",
+      },
       {
         protocol: "https",
         hostname: "**",

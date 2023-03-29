@@ -1,0 +1,62 @@
+.popularSec {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 40px;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  font-size: 3.5rem;
+  margin: 20px 0px;
+}
+
+.newsContainer {
+  width: 100vw;
+}
+
+.newsItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: 300ms;
+  border-radius: 15px;
+  padding: 10px 10px;
+  background-color: #f7f7f7;
+  color: #303030;
+  text-decoration: none;
+}
+
+.img {
+  position: relative !important;
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 15px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px;
+}
+
+.content h1 {
+  margin: 5px 0px;
+  font-size: 1.3rem;
+}
+
+.content h3 {
+  font-size: 0.9rem;
+  margin: 5px 0px;
+  font-weight: 500;
+}
+
+.pagdiv{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0px;
+}

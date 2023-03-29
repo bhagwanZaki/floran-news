@@ -2,10 +2,11 @@ import React, { Suspense } from "react";
 import Image from "next/image";
 import bg from "../asset/broken.jpg";
 import News_card_hori from "@/components/News_card_hori";
+import Link from 'next/link'
 
 async function getData() {
   const res = await fetch(
-    "http://api.mediastack.com/v1/news?access_key=313b3f328ad7e6614ca4e04bf7f017f5&keywords=general&categories= science,business,entertainment,health,sports,technology&countries=us",
+    "http://api.mediastack.com/v1/news?access_key=39683cbc5dfdc897065c465506016b13&keywords=general&categories= science,business,entertainment,health,sports,technology&countries=us",
     { cache: "no-store" }
   );
 
@@ -17,9 +18,6 @@ export default async function Recent_news_Section({ styles }) {
 
   const recentNews = await Promise.all([data]);
 
-  console.log("-=-=-=-===-=");
-  console.log(recentNews);
-  console.log("-=-=-=-===-=");
   return (
     <Suspense fallback={<div>Loading data</div>}>
       {recentNews == null ? (
@@ -30,7 +28,11 @@ export default async function Recent_news_Section({ styles }) {
         <div className={styles.recentNews}>
           <h1 className={styles.sectionTitle}>Recent News</h1>
           <div className={styles.rnewsSec}>
-            <div className={styles.firstrnews}>
+            <Link
+              href={recentNews[0].data[0].url}
+              target="_blank"
+              className={styles.firstrnews}
+            >
               <Image
                 fill
                 src={
@@ -48,7 +50,7 @@ export default async function Recent_news_Section({ styles }) {
                 </h3>
                 <h2>{recentNews[0].data[0].title}</h2>
               </div>
-            </div>
+            </Link>
             <div className={styles.otherrnews}>
               {recentNews[0].data.slice(1, 9).map((val, index) => {
                 return (
@@ -59,6 +61,7 @@ export default async function Recent_news_Section({ styles }) {
                     date={val.published_at.slice(0, 10)}
                     img={val.image}
                     cat={val.category}
+                    url={val.url}
                   />
                 );
               })}

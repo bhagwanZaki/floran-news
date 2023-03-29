@@ -6,7 +6,7 @@ import Link from "next/link";
 
 async function getData() {
   const res = await fetch(
-    "http://api.mediastack.com/v1/news?access_key=313b3f328ad7e6614ca4e04bf7f017f5&keywords=general&categories= science,business,entertainment,health,sports,technology&countries=us&sort=popularity",
+    "http://api.mediastack.com/v1/news?access_key=39683cbc5dfdc897065c465506016b13&keywords=general&categories= science,business,entertainment,health,sports,technology&countries=us&sort=popularity",
     { cache: "no-store" }
   );
 
@@ -17,14 +17,9 @@ export default async function News_section() {
   const data = await getData();
 
   const news = await Promise.all([data]);
-
-  console.log("pppppppppppppppppp")
-  console.log(news)
-  console.log("pppppppppppppppppp")
-
-  const NewsItem = ({ label, date, catergory, img }) => {
+  const NewsItem = ({ label, date, catergory, img, url }) => {
     return (
-      <div className={styles.newsItem}>
+      <Link target={"_blank"} href={url} className={styles.newsItem}>
         {img !== null ? (
           <img src={img} className={styles.newsImg} alt="img" />
         ) : (
@@ -36,9 +31,10 @@ export default async function News_section() {
           </h3>
           <h1>{label}</h1>
         </div>
-      </div>
+      </Link>
     );
   };
+
   return (
     <Suspense fallback={<div>Loading</div>}>
       {news == null ? (
@@ -49,7 +45,7 @@ export default async function News_section() {
         <section className={styles.newSection}>
           <div className={styles.upper}>
             <h1>Popular News</h1>
-            <Link className={styles.viewAll} href={"/"}>
+            <Link className={styles.viewAll} href={"popular"}>
               View All
             </Link>
           </div>
@@ -62,6 +58,7 @@ export default async function News_section() {
                   date={val.published_at.slice(0, 10)}
                   catergory={val.category}
                   img={val.image}
+                  url={val.url}
                 />
               );
             })}

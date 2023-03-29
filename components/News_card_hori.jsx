@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import bg from "../asset/broken.jpg";
+import Link from "next/link";
 
-function News_card_hori({ styles, label, img, date, cat }) {
+function News_card_hori({ styles, label, img, date, cat, url }) {
   return (
-    <div className={styles.rnewsCard}>
+    <Link target={"_blank"} href={url} className={styles.rnewsCard}>
       <Image
         width={100}
         height={100}
@@ -18,7 +19,7 @@ function News_card_hori({ styles, label, img, date, cat }) {
         </h3>
         <h2>{label}</h2>
       </div>
-    </div>
+    </Link>
   );
 }
 

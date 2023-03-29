@@ -50,6 +50,8 @@
   margin: 2px;
   transition: 300ms;
   border-radius: 6px;
+  color: #303030;
+  text-decoration: none;
 }
 
 .newsImg {
@@ -58,13 +60,25 @@
   display: block;
   border-radius: 15px;
 }
-.content h1{
+.content h1 {
   margin: 10px 0px;
   font-size: 1.3rem;
 }
 
-.content h3{
+.content h3 {
   font-size: 0.9rem;
   margin: 10px 0px;
   font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .newsContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .newsContainer {
+    grid-template-columns: 1fr;
+  }
 }
