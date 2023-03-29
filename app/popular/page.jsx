@@ -34,7 +34,7 @@ async function getData(setData, setLoading, id) {
     });
 }
 
-export default function page() {
+export default function Page() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
